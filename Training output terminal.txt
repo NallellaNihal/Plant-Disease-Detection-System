@@ -1,0 +1,57 @@
+(venv) nihal@fedora:~/Downloads/Plant-Disease-Detection-Project$ python train.py 
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1778661226.029772   25794 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1778661226.078191   25794 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1778661228.042144   25794 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+Found 11206 files belonging to 6 classes.
+E0000 00:00:1778661230.129118   25794 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+Found 4472 files belonging to 3 classes.
+Model: "functional"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ input_layer_1 (InputLayer)           │ (None, 224, 224, 3)         │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ true_divide (TrueDivide)             │ (None, 224, 224, 3)         │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ subtract (Subtract)                  │ (None, 224, 224, 3)         │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ mobilenetv2_1.00_224 (Functional)    │ (None, 7, 7, 1280)          │       2,257,984 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ global_average_pooling2d             │ (None, 1280)                │               0 │
+│ (GlobalAveragePooling2D)             │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout (Dropout)                    │ (None, 1280)                │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense (Dense)                        │ (None, 6)                   │           7,686 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 2,265,670 (8.64 MB)
+ Trainable params: 7,686 (30.02 KB)
+ Non-trainable params: 2,257,984 (8.61 MB)
+Epoch 1/10
+W0000 00:00:1778661243.855869   25818 cpu_allocator_impl.cc:82] Allocation of 154140672 exceeds 10% of free system memory.
+W0000 00:00:1778661243.955915   25818 cpu_allocator_impl.cc:82] Allocation of 156905472 exceeds 10% of free system memory.
+  1/351 ━━━━━━━━━━━━━━━━━━━━ 1:15:03 13s/step - accuracy: 0.4062 - loss: 1.5395W0000 00:00:1778661244.638111   25820 cpu_allocator_impl.cc:82] Allocation of 154140672 exceeds 10% of free system memory.
+  2/351 ━━━━━━━━━━━━━━━━━━━━ 4:31 777ms/step - accuracy: 0.3906 - loss: 1.6066 W0000 00:00:1778661245.409893   25820 cpu_allocator_impl.cc:82] Allocation of 351/351 ━━━━━━━━━━━━━━━━━━━━ 462s 1s/step - accuracy: 0.5344 - loss: 1.1909 - val_accuracy: 0.7095 - val_loss: 0.7773
+Epoch 2/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 402s 1s/step - accuracy: 0.7492 - loss: 0.7153 - val_accuracy: 0.8488 - val_loss: 0.5033
+Epoch 3/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 435s 1s/step - accuracy: 0.8113 - loss: 0.5494 - val_accuracy: 0.8915 - val_loss: 0.3897
+Epoch 4/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 492s 1s/step - accuracy: 0.8494 - loss: 0.4558 - val_accuracy: 0.9103 - val_loss: 0.3197
+Epoch 5/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 458s 1s/step - accuracy: 0.8654 - loss: 0.4012 - val_accuracy: 0.9213 - val_loss: 0.2757
+Epoch 6/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 424s 1s/step - accuracy: 0.8802 - loss: 0.3603 - val_accuracy: 0.9340 - val_loss: 0.2363
+Epoch 7/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 384s 1s/step - accuracy: 0.8944 - loss: 0.3263 - val_accuracy: 0.9385 - val_loss: 0.2201
+Epoch 8/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 384s 1s/step - accuracy: 0.8966 - loss: 0.3073 - val_accuracy: 0.9407 - val_loss: 0.2035
+Epoch 9/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 381s 1s/step - accuracy: 0.9050 - loss: 0.2930 - val_accuracy: 0.9441 - val_loss: 0.1836
+Epoch 10/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 421s 1s/step - accuracy: 0.9091 - loss: 0.2761 - val_accuracy: 0.9445 - val_loss: 0.1795
+Model saved successfully at: /home/nihal/Downloads/Plant-Disease-Detection-Project/models/plant_disease_model.keras
+Classes: ['Healthy', 'Leaf_Blight', 'Pepper__bell___Bacterial_spot', 'Powdery_Mildew', 'Tomato_Bacterial_spot', 'Tomato_Leaf_Mold']
